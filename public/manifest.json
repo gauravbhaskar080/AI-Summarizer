@@ -1,0 +1,15 @@
+{
+  "short_name": "Sumz App",
+  "name": "Sumz React App ",
+  "description": "Summarize the whole webiste in one click, just paste the url in input box and click enter button",
+  "version": "1.0",
+  "manifest_version": 3,
+  "action": {
+    "default_title": "Sumz App",
+    "default_popup": "index.html",
+    "default_icon": {
+      "16": "logo.png",
+      "128": "logo.png"
+    }
+  }
+}
