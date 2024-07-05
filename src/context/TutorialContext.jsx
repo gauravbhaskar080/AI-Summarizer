@@ -16,7 +16,7 @@ export const TutorialProvider = ({ children }) => {
   const steps = [
     {
       message: 'Welcome to the article summarizer! Click Next to start the tour.',
-      duration: 2000, 
+      duration: 4000, 
     },
     {
       message: 'Enter the URL of an article and click ↵ to get a summary.',
