@@ -6,6 +6,25 @@
   Note: The styles for this gradient grid background is heavily inspired by the creator of this amazing site (https://dub.sh) – all credits go to them! 
 */
 
+/* Add the following classes to apply light and dark themes */
+:root {
+  --color-background-light: #ffffff;
+  --color-background-dark: #121212;
+  --color-text-light: #000000;
+  --color-text-dark: #ffffff;
+}
+
+.light {
+  background-color: var(--color-background-light);
+  color: var(--color-text-light);
+}
+
+.dark {
+  background-color: var(--color-background-dark);
+  color: var(--color-text-dark);
+}
+
+
 .main {
   width: 100vw;
   min-height: 100vh;

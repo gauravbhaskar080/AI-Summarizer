@@ -2,9 +2,7 @@ import React, { createContext, useState, useContext, useEffect } from 'react';
 
 const TutorialContext = createContext();
 
-export const useTutorial = () => {
-  return useContext(TutorialContext);
-};
+export const useTutorial = () => useContext(TutorialContext);
 
 export const TutorialProvider = ({ children }) => {
   const [step, setStep] = useState(0);
@@ -16,23 +14,23 @@ export const TutorialProvider = ({ children }) => {
   const steps = [
     {
       message: 'Welcome to the article summarizer! Click Next to start the tour.',
-      duration: 4000, 
+      duration: null,
     },
     {
       message: 'Enter the URL of an article and click ↵ to get a summary.',
-      duration: null, 
+      duration: null,
     },
     {
       message: 'View the summary of the article here.',
-      duration: 3000, 
+      duration: null,
     },
     {
       message: 'Click the GitHub button to visit my GitHub page.',
-      duration: null, 
+      duration: null,
     },
     {
       message: '',
-      duration: null, 
+      duration: null,
     },
   ];
 
@@ -44,7 +42,7 @@ export const TutorialProvider = ({ children }) => {
     }, steps[step]?.duration || 0);
 
     return () => clearTimeout(timer);
-  }, [step, steps, nextStep]);
+  }, [step, steps]);
 
   useEffect(() => {
     if (step === steps.length - 1) {

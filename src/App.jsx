@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import Hero from './components/Hero';
 import Demo from './components/Demo';
@@ -7,13 +7,43 @@ import Character from './components/Character';
 
 const Tutorial = () => {
   const { step, steps, nextStep, prevStep, showCharacter } = useTutorial();
+  const [userInteracted, setUserInteracted] = useState(false);
+
+  // Set userInteracted to true on any user interaction
+  useEffect(() => {
+    const handleUserInteraction = () => setUserInteracted(true);
+
+    document.addEventListener('click', handleUserInteraction);
+    document.addEventListener('keydown', handleUserInteraction);
+
+    return () => {
+      document.removeEventListener('click', handleUserInteraction);
+      document.removeEventListener('keydown', handleUserInteraction);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (steps[step]?.message) {
+      const speakMessage = () => {
+        try {
+          const utterance = new SpeechSynthesisUtterance(steps[step].message);
+          speechSynthesis.speak(utterance);
+
+        } catch (error) {
+          console.error('Error fetching text-to-speech:', error);
+        }
+      };
+
+      speakMessage();
+    }
+  }, [step, steps, userInteracted]);
 
   return (
     <div className="fixed bottom-5 left-5 flex flex-col items-center space-y-2 z-50">
       {showCharacter && steps[step] && (
         <Character message={steps[step].message} />
       )}
-      {step !== steps.length - 1 && ( 
+      {step !== steps.length - 1 && (
         <div className="flex space-x-2">
           <button 
             onClick={prevStep} 
@@ -36,6 +66,18 @@ const Tutorial = () => {
 };
 
 const App = () => {
+  const [theme, setTheme] = useState('light');
+
+  useEffect(() => {
+    const root = document.documentElement;
+    root.classList.remove('light', 'dark');
+    root.classList.add(theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
+  };
+
   return (
     <TutorialProvider>
       <main>
@@ -43,7 +85,7 @@ const App = () => {
           <div className="gradient" />
         </div>
         <div className="app">
-          <Hero />
+          <Hero toggleTheme={toggleTheme}/>
           <Demo />
           <Tutorial />
         </div>
