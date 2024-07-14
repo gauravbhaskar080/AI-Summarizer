@@ -4,12 +4,12 @@ import Hero from './components/Hero';
 import Demo from './components/Demo';
 import { TutorialProvider, useTutorial } from './context/TutorialContext';
 import Character from './components/Character';
+import Chatbot from './components/Chatbot';
 
 const Tutorial = () => {
   const { step, steps, nextStep, prevStep, showCharacter } = useTutorial();
   const [userInteracted, setUserInteracted] = useState(false);
 
-  // Set userInteracted to true on any user interaction
   useEffect(() => {
     const handleUserInteraction = () => setUserInteracted(true);
 
@@ -28,7 +28,6 @@ const Tutorial = () => {
         try {
           const utterance = new SpeechSynthesisUtterance(steps[step].message);
           speechSynthesis.speak(utterance);
-
         } catch (error) {
           console.error('Error fetching text-to-speech:', error);
         }
@@ -88,6 +87,7 @@ const App = () => {
           <Hero toggleTheme={toggleTheme}/>
           <Demo />
           <Tutorial />
+          <Chatbot />
         </div>
       </main>
     </TutorialProvider>
