@@ -1,13 +1,13 @@
 .character-container {
-    position: fixed;
-    bottom: 20px; /* Adjust as needed */
-    left: 20px;   /* Adjust as needed */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    z-index: 1000; /* Ensure character is on top */
-    transition: top 0.5s, left 0.5s;
-  }
+  position: fixed;
+  bottom: 10px;
+  left: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  z-index: 1000;
+  transition: bottom 0.5s, left 0.5s;
+}
   
   .character-img {
     width: 100px;
@@ -24,3 +24,17 @@
     max-width: 200px; /* Adjust as needed */
   }
   
+  img.commentator-icon {
+    position: fixed;
+    bottom: 18px;
+    left: 20px;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    z-index: 1001;
+    transition: transform 0.3s ease;
+  }
+  
+  img.commentator-icon:hover {
+    transform: scale(1.1);
+  }

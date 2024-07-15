@@ -88,6 +88,14 @@
   }
 }
 
+
+@media screen and (max-width: 768px) {
+  .narrator {
+    margin-top: 20rem; 
+  }
+}
+
+
 /* Tailwind Styles */
 
 .app {
@@ -133,4 +141,5 @@
 .summary_box {
   @apply rounded-xl border border-gray-200 bg-white/20 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur p-4;
 }
+
 

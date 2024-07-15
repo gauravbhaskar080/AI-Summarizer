@@ -4,6 +4,8 @@ import copy from './copy.svg'
 import logo from './logo.svg'
 import tick from './tick.svg'
 import chat from './chat.png'
+import zoro from './zoro.png'
+import commentator from './commentator.png'
 
 export {
     linkIcon,
@@ -11,5 +13,7 @@ export {
     copy,
     logo,
     tick,
-    chat
+    chat,
+    zoro,
+    commentator
 }
